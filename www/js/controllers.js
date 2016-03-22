@@ -5,23 +5,14 @@ angular.module('starter.controllers', [])
             $scope.movies = undefined;
             Media.getMovies().then(function(results) {
                 $scope.movies = results;
+                for(var i = 0; i < $scope.movies.length; i++) {
+                    var movie = $scope.movies[i].movie;
+                    Media.getMovie(movie.ids.trakt).then(function(movieDetails) {
+                       movie.movieDetails = movieDetails; 
+                    });
+                }
             });
         });
-    })
-
-    .controller('ChatsCtrl', function($scope, Chats) {
-        // With the new view caching in Ionic, Controllers are only called
-        // when they are recreated or on app start, instead of every page change.
-        // To listen for when this page is active (for example, to refresh data),
-        // listen for the $ionicView.enter event:
-        //
-        //$scope.$on('$ionicView.enter', function(e) {
-        //});
-
-        $scope.chats = Chats.all();
-        $scope.remove = function(chat) {
-            Chats.remove(chat);
-        };
     })
 
     .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
