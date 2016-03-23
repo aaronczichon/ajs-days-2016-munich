@@ -1,6 +1,6 @@
 {
   "name": "ajs-demo",
-  "app_id": "c9185ca6",
+  "app_id": "PUT-YOUR-APP-ID-HERE",
   "gulpStartupTasks": [
     "sass",
     "watch"
